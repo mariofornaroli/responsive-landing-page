@@ -226,12 +226,84 @@ section figure img {
 
 /* RESPONSIVENESS */
 
-@media screen and (max-width: 570px) {
+.nav-ctrl {
+    cursor: pointer;
+    display: none;
+}
+
+
+@media screen and (max-width: 750px) {
     .cta button {
         padding: 8px;
     }
 
-    header nav {
+    /* Small device menu controls */
+
+    .nav-ctrl {
+        display: block;
+        font-size: 2.4rem;
+    }
+
+    .nav-ctrl .fa-xmark {
         display: none;
+    }
+
+    .is-open .nav-ctrl .fa-xmark {
+        display: block;
+    }
+
+    .is-open .nav-ctrl .fa-bars {
+        display: none;
+    }
+
+    /* Menu responsiveness animation */
+
+    .nav-menu-container {
+        background-color: var(--body-bk);
+        position: fixed;
+        left: 0;
+        width: 100%;
+        /* top: 80px; */
+        top: -500px;
+        transition: 0.7s;
+    }
+
+    .nav-menu-container,
+    nav,
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        padding: 28px;
+        border-bottom: 1px solid #222;
+        width: 100%;
+    }
+
+    .is-open .nav-menu-container {
+        top: 80px;
+    }
+
+    /* Avoid menu animation to mve on top of header. I want it to pass behind the header */
+
+    header {
+        padding: 0;
+    }
+
+    .logo,
+    .nav-ctrl {
+        background-color: var(--body-bk);
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+        z-index: 1;
+    }
+
+    .logo {
+        width: 100%;
     }
 }
